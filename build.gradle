@@ -1,0 +1,59 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'cl.lider.challenge'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    integrationtest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integrationtest/java')
+        }
+        resources.srcDir file('src/integrationtest/resources')
+    }
+}
+
+task integrationtest(type: Test) {
+    testClassesDirs = sourceSets.integrationtest.output.classesDirs
+    classpath = sourceSets.integrationtest.runtimeClasspath
+}
+
+configurations {
+    integrationtestCompile.extendsFrom testCompile
+    integrationtestRuntime.extendsFrom testRuntime
+    integrationtestImplementation.extendsFrom testImplementation
+}
+
+check.dependsOn integrationtest
+integrationtest.mustRunAfter test
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
