@@ -1,4 +1,4 @@
-package cl.lider.challenge.lidersale.entity;
+package cl.lider.challenge.lidersale.entity.product;
 
 import lombok.Getter;
 import lombok.Setter;

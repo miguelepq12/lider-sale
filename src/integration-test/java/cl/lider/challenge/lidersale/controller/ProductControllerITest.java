@@ -66,18 +66,18 @@ public class ProductControllerITest {
 
         Page<Product> pageProduct = new PageImpl<>(products);
 
-        Mockito.when(service.getProducts("", ""))
+        Mockito.when(service.getProducts("", 1))
                 .thenReturn(pageProduct);
 
         MvcResult mvcResult = mockMvc.perform(get("/products")
                 .contentType("application/json")
                 .param("text", "")
-                .param("page", ""))
+                .param("page", "1"))
                 .andExpect(status().isOk()).andReturn();
         ;
 
         String actualResponseBody = mvcResult.getResponse().getContentAsString();
-        assertThat(actualResponseBody).isNotEqualToIgnoringWhitespace(
+        assertThat(actualResponseBody).isEqualToIgnoringWhitespace(
                 objectMapper.writeValueAsString(pageProduct));
 
     }
