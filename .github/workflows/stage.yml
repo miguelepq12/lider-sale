@@ -35,6 +35,8 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 11.0.4
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Generate jacoco report
         run: ./gradlew clean check jacocoTestReport
       - name: SonarCloud Scan
