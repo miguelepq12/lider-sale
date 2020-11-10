@@ -69,7 +69,7 @@ public class ProductControllerITest {
         Mockito.when(service.getProducts("", 1))
                 .thenReturn(pageProduct);
 
-        MvcResult mvcResult = mockMvc.perform(get("/products")
+        MvcResult mvcResult = mockMvc.perform(get("/api/products")
                 .contentType("application/json")
                 .param("text", "")
                 .param("page", "1"))
