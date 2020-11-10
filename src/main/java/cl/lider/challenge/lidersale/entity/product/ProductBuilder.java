@@ -1,9 +1,8 @@
-package cl.lider.challenge.lidersale.entity.builders;
+package cl.lider.challenge.lidersale.entity.product;
 
-import cl.lider.challenge.lidersale.entity.Product;
-import org.springframework.data.annotation.Id;
+import cl.lider.challenge.lidersale.entity.IBuilder;
 
-public class ProductBuilder implements IBuilder{
+public class ProductBuilder implements IBuilder {
 
     private long id;
     private String brand;
@@ -50,7 +49,13 @@ public class ProductBuilder implements IBuilder{
     @Override
     public Product build() {
         Product build= new Product();
-        build.setI
-        build.
+        build.setId(this.id);
+        build.setBrand(this.brand);
+        build.setDescription(this.description);
+        build.setImage(this.image);
+        build.setPrice(this.price);
+        build.setDiscount(this.discount);
+        build.setPriceWithDiscount(this.priceWithDiscount);
+        return build;
     }
 }
