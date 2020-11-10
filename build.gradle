@@ -74,9 +74,6 @@ sonarqube {
         property "sonar.projectKey", "miguelepq12_lider-sale"
         property "sonar.organization", "miguelepq12"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.coverage.jacoco.xmlReportPaths", jacocoTestReport.reports.xml.destination
-        properties["sonar.junit.reportPaths"] += integrationTest.reports.junitXml.destination
-        properties["sonar.tests"] += sourceSets.integrationTest.allSource.srcDirs
     }
 }
 
