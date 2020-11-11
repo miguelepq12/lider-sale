@@ -16,12 +16,12 @@ public class ExceptionAdvice
     @ExceptionHandler({ LiderSaleException.class })
     public ResponseEntity<Error> mapException(LiderSaleException ose) {
         Error error = new Error(ose.getCodigo(), ose.getMensaje());
-        return (ResponseEntity<Error>)new ResponseEntity((Object)error, HttpStatus.CONFLICT);
+        return new ResponseEntity(error, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler({ LiderSaleNotFoundException.class })
     public ResponseEntity<Error> mapException(LiderSaleNotFoundException ose) {
         Error error = new Error(HttpStatus.NOT_FOUND.name(), ose.getMensaje());
-        return (ResponseEntity<Error>)new ResponseEntity((Object)error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity(error, HttpStatus.NOT_FOUND);
     }
 }
