@@ -15,7 +15,7 @@ public class ProductPalindromoService implements ProductDiscountService {
 
     @Override
     public Page<Product> getProducts(String text, int page,int elementsPage) {
-        Page<Product> products=getProductsRepository(text,page,elementsPage);
+        Page<Product> products=getProductsRepository(text,page>0?page-1:0,elementsPage);
 
         if(isTextPalindromo(text)){
             products.getContent().forEach(this::applyDiscount);

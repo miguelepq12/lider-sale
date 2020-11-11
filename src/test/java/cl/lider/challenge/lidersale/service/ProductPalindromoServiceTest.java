@@ -75,7 +75,7 @@ class ProductPalindromoServiceTest {
                 .collect(Collectors.toList()));
 
         Mockito.when(productRepository.findByBrandContainingOrDescriptionContaining(
-                text, text, PageRequest.of(page, numberPages)))
+                text, text, PageRequest.of(page-1, numberPages)))
                 .thenReturn(productsPage);
 
         Page<Product> productPage = service.getProducts(text, page, numberPages);
@@ -90,7 +90,7 @@ class ProductPalindromoServiceTest {
                 .collect(Collectors.toList()));
 
         Mockito.when(productRepository.findById(Long.parseLong(textNumber),
-                PageRequest.of(page, numberPages)))
+                PageRequest.of(page-1, numberPages)))
                 .thenReturn(productsPage);
 
         Page<Product> productPage = service.getProducts(textNumber, page, numberPages);
@@ -106,7 +106,7 @@ class ProductPalindromoServiceTest {
                 .collect(Collectors.toList()));
 
         Mockito.when(productRepository.findByBrandContainingOrDescriptionContaining(
-                text, text, PageRequest.of(page, numberPages)))
+                text, text, PageRequest.of(page-1, numberPages)))
                 .thenReturn(productsPage);
 
         Page<Product> productPage = service.getProducts(text, page, numberPages);
