@@ -12,7 +12,7 @@ For building and running the application you need:
   
 ## Setup
 
-- Linux & Mac install build gradle on project file:
+- Linux & Mac install build gradle on project folder:
 
 ```shell
 ./gradlew build
