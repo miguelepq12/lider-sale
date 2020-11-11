@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ProductRepository extends MongoRepository<Product, String> {
 
-    Page<Product> findByIdIsOrBrandContainingOrDescriptionContaining(long id, String brand,
-                                                                     String description,
+    Page<Product> findByBrandContainingOrDescriptionContaining(String brand, String description,
                                                                      Pageable pageable);
+    Page<Product> findById(long id,Pageable pageable);
 }
