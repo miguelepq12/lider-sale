@@ -1,7 +1,7 @@
 package cl.lider.challenge.lidersale.controller;
 
 import cl.lider.challenge.lidersale.entity.product.Product;
-import cl.lider.challenge.lidersale.service.ProductService;
+import cl.lider.challenge.lidersale.service.ProductDiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @Autowired
-    ProductService service;
+    ProductDiscountService service;
 
     @GetMapping
     Page<Product> getProducts(@RequestParam("text") String text,
-                              @RequestParam("page") int page){
-        return service.getProducts(text,page);
+                              @RequestParam("page") int page,
+                              @RequestParam("element-page") int elementPage){
+        return service.getProducts(text,page,elementPage);
     }
 }

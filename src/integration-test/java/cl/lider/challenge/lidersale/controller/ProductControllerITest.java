@@ -3,7 +3,7 @@ package cl.lider.challenge.lidersale.controller;
 import cl.lider.challenge.lidersale.LiderSaleApplication;
 import cl.lider.challenge.lidersale.entity.product.Product;
 import cl.lider.challenge.lidersale.entity.product.ProductBuilder;
-import cl.lider.challenge.lidersale.service.ProductService;
+import cl.lider.challenge.lidersale.service.ProductDiscountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ public class ProductControllerITest {
     private MockMvc mockMvc;
 
     @MockBean
-    ProductService service;
+    ProductDiscountService service;
 
     @Autowired
     ProductController productController=new ProductController();
@@ -66,13 +66,14 @@ public class ProductControllerITest {
 
         Page<Product> pageProduct = new PageImpl<>(products);
 
-        Mockito.when(service.getProducts("", 1))
+        Mockito.when(service.getProducts("", 1,10))
                 .thenReturn(pageProduct);
 
         MvcResult mvcResult = mockMvc.perform(get("/api/products")
                 .contentType("application/json")
                 .param("text", "")
-                .param("page", "1"))
+                .param("page", "1")
+                .param("element-page", "10"))
                 .andExpect(status().isOk()).andReturn();
         ;
 
