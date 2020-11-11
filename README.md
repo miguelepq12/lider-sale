@@ -21,7 +21,7 @@ For building and running the application you need:
 
 ## Run Tests
 
-- Linux & Mac run unit test and integration test with gradle on project file:
+- Linux & Mac run unit test and integration test with gradle on project folder:
 
 ### Unit Test
 
