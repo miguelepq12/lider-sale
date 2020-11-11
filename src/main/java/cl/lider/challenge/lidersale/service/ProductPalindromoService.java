@@ -43,15 +43,19 @@ public class ProductPalindromoService implements ProductDiscountService {
     }
 
     private boolean isTextPalindromo(String text){
-        text = text.toLowerCase().replace("á", "a")
-                .replace("é", "e")
-                .replace("í", "i")
-                .replace("ó", "o")
-                .replace("ú", "u")
-                .replace(" ", "")
-                .replace(".", "")
-                .replace(",", "");
-        String invertida = new StringBuilder(text).reverse().toString();
-        return invertida.equals(text);
+        if(!text.isEmpty()) {
+            text = text.toLowerCase().replace("á", "a")
+                    .replace("é", "e")
+                    .replace("í", "i")
+                    .replace("ó", "o")
+                    .replace("ú", "u")
+                    .replace(" ", "")
+                    .replace(".", "")
+                    .replace(",", "");
+            String invertida = new StringBuilder(text).reverse().toString();
+            return invertida.equals(text);
+        }else {
+            return false;
+        }
     }
 }
