@@ -32,4 +32,9 @@ public class ValidateProductTest {
     void validateDataWithThreeTextTest(){
         Assertions.assertEquals(ValidateProduct.MENSAJE_ERROR, validate.validateData("sds"));
     }
+
+    @Test
+    void validateDataSuccessfulTest(){
+        Assertions.assertEquals("", validate.validateData("sdsdsa"));
+    }
 }
