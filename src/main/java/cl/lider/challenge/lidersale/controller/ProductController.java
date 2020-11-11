@@ -15,7 +15,7 @@ public class ProductController {
     ProductDiscountService service;
 
     @GetMapping
-    Page<Product> getProducts(@RequestParam("text") String text,
+    public Page<Product> getProducts(@RequestParam("text") String text,
                               @RequestParam("page") int page,
                               @RequestParam("element-page") int elementPage){
         return service.getProducts(text,page,elementPage);
