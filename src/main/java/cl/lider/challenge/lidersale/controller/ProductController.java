@@ -2,6 +2,7 @@ package cl.lider.challenge.lidersale.controller;
 
 import cl.lider.challenge.lidersale.entity.product.Product;
 import cl.lider.challenge.lidersale.entity.product.ValidateProduct;
+import cl.lider.challenge.lidersale.exception.LiderSaleException;
 import cl.lider.challenge.lidersale.service.ProductDiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +26,7 @@ public class ProductController {
         if(error.isEmpty()){
             return service.getProducts(text,page,elementPage);
         }else {
-            throw new RuntimeException(error);
+            throw new LiderSaleException("01",error);
         }
     }
 }
