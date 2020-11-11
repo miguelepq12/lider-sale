@@ -66,6 +66,18 @@ class ProductPalindromoServiceTest {
                 .build());
 
     }
+    @Test
+    void getAllProductsTest() {
+        productsPage = new PageImpl<>(products);
+
+        Mockito.when(productRepository.findByBrandContainingOrDescriptionContaining(
+                "", "", PageRequest.of(page-1, numberPages)))
+                .thenReturn(productsPage);
+
+        Page<Product> productPage = service.getProducts("", page, numberPages);
+
+        Assertions.assertEquals(3, productPage.getTotalElements());
+    }
 
     @Test
     void getProductsForBrandDescriptionTest() {
@@ -93,7 +105,7 @@ class ProductPalindromoServiceTest {
                 PageRequest.of(page, numberPages)))
                 .thenReturn(productsPage);
 
-        Page<Product> productPage = service.getProducts(textNumber, page, numberPages);
+        Page<Product> productPage = service.getProducts(textNumber, page-1, numberPages);
 
         Assertions.assertEquals(1, productPage.getTotalElements());
     }
