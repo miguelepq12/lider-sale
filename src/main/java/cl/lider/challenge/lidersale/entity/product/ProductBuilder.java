@@ -2,7 +2,7 @@ package cl.lider.challenge.lidersale.entity.product;
 
 import cl.lider.challenge.lidersale.entity.IBuilder;
 
-public class ProductBuilder implements IBuilder {
+public class ProductBuilder implements IBuilder<Product> {
 
     private long id;
     private String brand;
